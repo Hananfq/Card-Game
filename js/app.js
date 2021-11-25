@@ -127,7 +127,7 @@ function nomatch(){
     card2='';
     lockCard= false;
     resetCards();
-    cardsOrder();
+   
 }
     ,1500)
 }
