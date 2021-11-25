@@ -6,7 +6,7 @@ function shuffle(array) {
         currentIndex -= 1;
         temporaryValue = array[currentIndex];
         array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
+        array[randomIndex]= temporaryValue;
     }
 
     return array;
@@ -17,8 +17,10 @@ function shuffle(array) {
 // variable
 
 //--------------------------------------------------------------------------------------------------------------------------
-//let deck = document.querySelector(".deck");
-let cards = Array.from(document.querySelectorAll('.card'))
+let deck = document.querySelector("#deck");
+let cards = Array.from(deck.children);
+//let orderRange= Array.from(Array(cards.length).keys())
+//let cards = Array.from(document.querySelectorAll('.card'))
 let heart= Array.from(document.getElementsByClassName('bi-heart-fill'));
 let moves = document.getElementById("moves");
 let restart= document.querySelector('#restart');
@@ -55,7 +57,7 @@ function flip(){
     console.log(card1.dataset.framework);
     console.log(card2.dataset.framework);
     chick();
-    Cards=shuffle(cards);
+    
     
  }
    
@@ -141,7 +143,8 @@ function nomatch(){
     card1='';
     card2='';
     lockCard= false;
-    resetCards()
+    resetCards();
+    cardsOrder();
 }
     ,1500)
 }
@@ -164,6 +167,16 @@ function chick(){
 }
 
 
+//---------------------------------------------------------------------------------------
+
+function cardsOrder(){
+   var shuffledCards = shuffle(cards);
+   for (var i= 0; i < shuffledCards.length; i++){
+      [].forEach.call(shuffledCards, function(item){
+         deck.appendChild(item);
+      });
+   }
+}
 //--------------------------------------------------------------------------------------------------------------------------
 
 // event listener
@@ -177,8 +190,11 @@ cards.forEach(cards=> {
 restart.addEventListener("click", function(){
 
     window.location.reload();
-   Cards= shuffle(cards);
+    cardsOrder();
+
     
     
 })
+
+window.onload = cardsOrder();
 
