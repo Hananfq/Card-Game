@@ -1,16 +1,3 @@
-function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
-
-    while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex]= temporaryValue;
-    }
-
-    return array;
-}
 
 //--------------------------------------------------------------------------------------------------------------------------
 
@@ -19,8 +6,6 @@ function shuffle(array) {
 //--------------------------------------------------------------------------------------------------------------------------
 let deck = document.querySelector("#deck");
 let cards = Array.from(deck.children);
-//let orderRange= Array.from(Array(cards.length).keys())
-//let cards = Array.from(document.querySelectorAll('.card'))
 let heart= Array.from(document.getElementsByClassName('bi-heart-fill'));
 let moves = document.getElementById("moves");
 let restart= document.querySelector('#restart');
@@ -63,11 +48,8 @@ function flip(){
    
 }
 
-//-------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------
 
-
-
-//-------------------------------------------------------------------------------------
 const timerCount= ()=> {
 let min= Math.floor(time/60);
 let sec= time % 60;
@@ -112,6 +94,7 @@ function heartCount(){
           heart[i].style.visibility= "collapse";
 }
  } }}
+
  //-------------------------------------------------------------------------------------
 
 function counter(){
@@ -155,6 +138,7 @@ function resetCards(){
     [hasFlipped, lockCard]= [false, false];
     [card1,card2]= [null,null]
 }
+
 //---------------------------------------------------------------------------------------
 
 function chick(){
@@ -166,7 +150,6 @@ function chick(){
     }
 }
 
-
 //---------------------------------------------------------------------------------------
 
 function cardsOrder(){
@@ -177,6 +160,23 @@ function cardsOrder(){
       });
    }
 }
+
+//-------------------------------------------------------------------------------------
+
+function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+
+    while (currentIndex !== 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex]= temporaryValue;
+    }
+
+    return array;
+}
+
 //--------------------------------------------------------------------------------------------------------------------------
 
 // event listener
